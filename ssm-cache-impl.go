@@ -141,7 +141,7 @@ func (ssmCache *ssmCacheImpl) GetExpiringParameterGroup(groupKey string,
 		Recursive: aws.Bool(true),
 	}
 	// Walk the pages...
-	paramMap := make(map[string]interface{}, 0)
+	paramMap := ParameterGroup(make(map[string]interface{}, 0))
 	pagingErr := ssmCache.ssmSvc.GetParametersByPathPages(paramByPathInput,
 		func(page *ssm.GetParametersByPathOutput, lastPage bool) bool {
 			for _, eachParam := range page.Parameters {
